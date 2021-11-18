@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <div id="appLoading">
+    <div class="loading">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <br><br>
+      <div style="font-weight: 700; color: white">正在加载...</div>
+    </div>
+  </div>
+  <div id="app"></div>
+  <script type="module" src="/main.ts"></script>
+</body>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  #appLoading {
+    width: 100vw;
+    height: 100vh;
+    background: #171f26;
+    padding-top: 45vh;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+    /* Chrome Safari */
+  }
+
+  .loading {
+    width: 80px;
+    height: 40px;
+    margin: auto;
+  }
+
+  .loading span {
+    display: inline-block;
+    width: 8px;
+    height: 100%;
+    border-radius: 4px;
+    background: #1989fa;
+    -webkit-animation: load 1s ease infinite;
+  }
+
+  @-webkit-keyframes load {
+
+    0%,
+    100% {
+      height: 40px;
+      background: rgb(140, 197, 255);
+    }
+
+    50% {
+      height: 70px;
+      margin: -15px 0;
+      background: lightblue;
+    }
+  }
+
+  .loading span:nth-child(2) {
+    -webkit-animation-delay: 0.2s;
+  }
+
+  .loading span:nth-child(3) {
+    -webkit-animation-delay: 0.4s;
+  }
+
+  .loading span:nth-child(4) {
+    -webkit-animation-delay: 0.6s;
+  }
+
+  .loading span:nth-child(5) {
+    -webkit-animation-delay: 0.8s;
+  }
+</style>
+
+</html>

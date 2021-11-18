@@ -1,0 +1,97 @@
+{
+  "name": "dm_electron_demo",
+  "version": "0.0.1",
+  "main": "dist/main/build.js",
+  "author": "Plusl",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npm run dev:all",
+    "dev:all": "set NODE_ENV=development && concurrently -n=vue,ele -c=green,blue \"npm run dev:vue\" \"npm run dev:ele\"",
+    "dev:vue": "vite",
+    "dev:ele": "node script/build --env=development --watch",
+    "build:vue": "vite build",
+    "build:ele": "node script/build --env=production",
+    "build": "npm run build:vue && npm run build:ele && electron-builder",
+    "rebuild": "./node_modules/.bin/electron-rebuild"
+  },
+  "build": {
+    "appId": "dm_electron_demo_48100247@qq.com",
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
+    },
+    "files": [
+      "logo.ico",
+      "node_modules",
+      "dist/main/**",
+      "dist/render/**",
+      "!node_modules/element-plus",
+      "!node_modules/vue",
+      "!node_modules/vue-router"
+    ],
+    "extraResources": {
+      "from": "./src/main/library/",
+      "to": "library"
+    },
+    "mac": {
+      "artifactName": "${productName}_setup_${version}.${ext}",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "requestedExecutionLevel": "highestAvailable",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32"
+          ]
+        }
+      ],
+      "artifactName": "${productName}_setup_${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false
+    }
+  },
+  "dependencies": {
+    "baidu-aip-sdk": "^2.4.6",
+    "electron-is-dev": "^1.2.0",
+    "electron-store": "^6.0.0",
+    "element-plus": "1.0.2-beta.33",
+    "vue": "^3.0.7",
+    "vue-router": "^4.0.0-beta.13",
+    "winax": "^3.3.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-alias": "^3.1.1",
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@vitejs/plugin-vue": "^1.0.4",
+    "@vue/compiler-sfc": "^3.0.5",
+    "chalk": "^4.1.0",
+    "concurrently": "^5.3.0",
+    "dotenv": "^8.2.0",
+    "electron": "9.1.0",
+    "electron-builder": "^22.8.0",
+    "electron-connect": "^0.6.3",
+    "electron-rebuild": "^2.3.5",
+    "minimist": "^1.2.5",
+    "ora": "^5.0.0",
+    "rollup-plugin-esbuild": "^2.4.2",
+    "sass": "^1.26.10",
+    "typescript": "^3.9.7",
+    "vite": "latest",
+    "wait-on": "^5.2.1"
+  },
+  "keywords": [
+    "vite",
+    "electron",
+    "vue3",
+    "rollup"
+  ]
+}
