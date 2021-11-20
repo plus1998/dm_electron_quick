@@ -28,3 +28,6 @@ node 12.18.3-x86
 
 - /dist/dm_electron_demo_setup_0.0.1.exe
 
+## 交流
+
+QQ交流群： 210932685
